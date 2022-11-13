@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card-counter assigned">
+        <img class="img" src="/assets/images/assigned-card.PNG" alt="assigned-card.PNG">
+        <span class="d-flex justify-content-center counter">{{JobsSummaryResponse.allocatedjobs}}</span>
+        <span class="d-flex justify-content-end count-name"> Assigned Jobs</span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter un-assigned">
+        <img class="img" src="/assets/images/unassigned-card.PNG" alt="unassigned-card.PNG">
+        <span class="d-flex justify-content-center counter">{{JobsSummaryResponse.unallocatedjobs}}</span>
+        <span class="d-flex justify-content-end count-name">Un Assigned Jobs</span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter completed">
+        <img class="img" src="/assets/images/completed-card.PNG" alt="completed-card.PNG">
+        <span class="d-flex justify-content-center counter">{{JobsSummaryResponse.completedjobs}}</span>
+        <span class="d-flex justify-content-end count-name">Complete Jobs</span>
+      </div>
+    </div>
+
+
+    <div class="col-md-3">
+      <div class="card-counter in-process">
+        <img class="img" src="/assets/images/inprocess-card.PNG" alt="inprocess-card.PNG">
+        <span class="d-flex justify-content-center counter">{{JobsSummaryResponse.allocatedjobs}}</span>
+        <span class="d-flex justify-content-end count-name">Cancelled Jobs</span>
+      </div>
+    </div>
+
+ 
+  </div>
+
+  <div class="flex my-5">
+    <div class="flex">
+      <div class="flex-item">
+        <div style="display: block;">
+          <canvas baseChart width="400" height="100" 
+          [data]="lineChartData" 
+          [options]="lineChartOptions"
+          [type]="lineChartType" 
+          (chartHover)="chartHovered($event)" 
+          (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+      <div class="flex-item">
+      	<span>Recent Jobs</span>
+			<table class="table">
+				<thead>
+				  <tr>
+					<th scope="col">Action</th>
+					<th scope="col">Job Title</th>
+					<th scope="col">Status</th>
+	
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr *ngFor="let d of Pending_adminJobmodal; let i=index">
+					<td> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
+					<td>{{d.servicename}}</td>
+					<td>
+						<span><img class="img-icon p-2" src="/assets/images/Assigned.png" alt="assigned-card.PNG">Assigned</span>
+					<!--	<br>
+						 <span><img class="img-icon p-2" src="/assets/images/assign.PNG" alt="assigned-card.PNG">Un Assigned</span> -->
+					</td>
+				
+				  </tr>
+				</tbody>
+			  </table>
+			  <nav aria-label="Page navigation example">
+				<ul class="pagination">
+				  <li class="page-item"><a class="page-link" (click)="previous('1')">Previous</a></li>
+				  <li class="page-item"><a class="page-link" (click)="next('1')">Next</a></li>
+				</ul>
+			  </nav>
+      </div>
+    </div>
+  </div>

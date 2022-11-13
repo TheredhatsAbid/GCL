@@ -1,0 +1,114 @@
+<div class="wrapper-other fadeInDown" *ngIf="!showOTP ">
+  <div id="formContent" style="background: radial-gradient(54.95% 54.95% at 50% 45.05%, #3B95C7 0%, #1F5979 100%);">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first mt-4">
+      <img src="/assets/images/app-logo.png" alt="app-logo.png">
+      <h3 class="text-white p-3">Login</h3>
+    </div>
+
+    <!-- Login Form -->
+    <!-- <form #f="ngForm" [formGroup]="phoneForm"> -->
+    <div class="form">
+      <select class="form-select select fadeIn second " style=" background-color: #f6f6f6;
+        border: none;
+        color: #0d0d0d;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        transition: all 0.5s ease-in-out;
+        border-radius: 5px 5px 5px 5px;" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedValue"
+        (change)="onChangeName($event)">
+
+        <option [label]="name" *ngFor="let name of types" [value]="name">{{name}}</option>
+
+      </select>
+
+      <input type="text" id="login" class="fadeIn second" name="email" [(ngModel)]="objlogin.email"
+        placeholder="Email Address">
+      <!-- <span class="d-flex justify-content-center text-white" *ngIf="selectedValue != 'Technician'" >or</span>
+
+      <input type="text" id="login" class="fadeIn second" name="PhoneNumber" [(ngModel)]="objlogin.mobile"
+        placeholder="Phone Number"> -->
+
+      <input type="password" id="password" class="fadeIn second" name="password" [(ngModel)]="objlogin.password"
+        placeholder="Password">
+      <input type="submit" (click)="login()" class="btn btn-warning pb-2" value="Login">
+      <span class="d-flex justify-content-center text-white">Forget Password</span>
+      <!-- </form> -->
+    </div>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter" style="background: radial-gradient(54.95% 54.95% at 50% 45.05%, #3B95C7 0%, #1F5979 100%);">
+      <span class="d-flex justify-content-center text-white">
+        <p>Don't have an account </p>&nbsp;&nbsp;<p style="color:yellow" (click)="Route('register')"> Register</p>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<button class="button" hidden id="btnid" (click)="open(mymodal)">Assign</button>
+
+<ng-template #mymodal let-modal style="background-color: #F9F8F8;">
+     <button type="button" hidden class="close" id="btncloseid" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  <div class="modal-header d-flex justify-content-center">
+    <!-- <h4 class="modal-title d-flex justify-content-between" id="modal-basic-title"></h4> -->
+   <div class="OTP-image-background rounded-circle m-3"> 
+    <img class="m-5" src="/assets/images/OTP.png"  alt="OTP.png">
+
+   </div>
+    <!-- <button type="button" hidden class="close" id="btncloseid" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row  ">
+      <span class="d-flex justify-content-center m-1"> <h3>
+        Verify code send to your Email Address 
+      </h3>
+    </span>
+      </div>
+
+      <div class="row ">
+        <span class="d-flex justify-content-center m-1">
+          <h3>
+            {{objlogin.email}}
+          </h3>
+          </span>
+        
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-2 col-2"><input type="text" class="p-0" (keyup)="keytab($event,'ist')" id='ist' maxlength="1" [(ngModel)]="ist"></div>
+        <div class="col-md-2 col-lg-2 col-sm-2 col-2"><input type="text" class="p-0" (keyup)="keytab($event,'sec')" id="sec" maxlength="1" [(ngModel)]="sec"></div>
+        <div class="col-md-2 col-lg-2 col-sm-2 col-2"><input type="text" class="p-0" (keyup)="keytab($event,'third')" id="third" maxlength="1" [(ngModel)]="third"></div>
+        <div class="col-md-2 col-lg-2 col-sm-2 col-2"><input type="text" class="p-0" (keyup)="keytab($event,'fourth')" id="fourth" maxlength="1" [(ngModel)]="fourth"></div>
+        <div class="col-md-2 col-lg-2 col-sm-2 col-2"><input type="text" class="p-0" (keyup)="keytab($event,'fifth')" id="fifth" maxlength="1" [(ngModel)]="fifth"></div>
+        <div class="col-md-2 col-lg-2 col-sm-2 col-2"><input type="text" class="p-0" (keyup)="keytab($event,'sixth')" id="sixth" maxlength="1" [(ngModel)]="sixth"></div>
+      </div>
+      <div class="row  mt-2">
+    <span class="d-flex justify-content-center">
+      Don’t receive the code? &nbsp;<span class="txt-resend"> Resend </span>
+    </span>        
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn verifyOTP w-100 text-white" (click)="VerifyLogin()">Verify OTP</button>
+  </div>
+</ng-template>

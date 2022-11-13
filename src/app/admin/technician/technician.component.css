@@ -1,0 +1,14 @@
+.table thead{
+    background: #F9B120;
+    color:aliceblue;
+}
+.img-icon{
+max-height: 39px
+}
+
+.button{
+    background-color:#74C237;
+    border-radius:15px;
+    color:white;
+    border-color:#74C237; ;
+}

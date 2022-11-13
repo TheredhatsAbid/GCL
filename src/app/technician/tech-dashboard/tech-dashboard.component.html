@@ -1,0 +1,55 @@
+<div class="wrapper-other fadeInDown">
+    <div id="formContent">
+
+        <div class="fadeIn first topBar py-1 ">
+             <h3 *ngIf="showpending">Technician Open Bookings</h3>
+
+            <h3 *ngIf="showCompleted">Technician Close Job</h3>
+        </div>
+        <div class="row d-flex justify-content-center ">
+            <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6 px-3" >
+                <button type="button" class="btn btn-secondary w-95 py-1 "
+                [ngClass]="{'btn-warning': showCompleted === false  }"  style=" color:white" (click)="showTable('O')" >Open Job</button>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6 px-3" >
+                <button  type="button" class="btn btn-secondary w-95 py-1 " [ngClass]="{'btn-warning': showpending === false }" style=" color:white" (click)="showTable('C')">Close Job</button>
+            </div>
+        </div>
+            <div class="container px-3" *ngIf="showpending" >
+                <!-- <h3>Pending Bookings</h3> -->
+                <div class="row" >
+                <table class="table bg table-hover mt-2 ">
+                    <tbody>
+                        
+                        <tr *ngFor="let item of upComingBookings; index as i" class="m-1" >
+                            <td>{{item.customername}}</td>
+                            <td>{{item.servicename}}</td>
+                            <td>{{item.paidamount}}</td>
+                            <td class="btn-gray" (click)="open(item.bookingid )">></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+
+            <div class="container px-3" *ngIf="showCompleted">
+                <!-- <h3>Close Job</h3> -->
+                <table class="table bg table-hover mt-2">
+                    <tbody>
+                        
+                        
+                        <tr *ngFor="let item of completedBookings; index as i"  class="m-1">
+                            <td>{{item.customername}}</td>
+                            <td>{{item.servicename}}</td>
+                            <td>{{item.paidamount}}</td>
+                            <td class="btn-gray" (click)="open(item.bookingid )">></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+</div>

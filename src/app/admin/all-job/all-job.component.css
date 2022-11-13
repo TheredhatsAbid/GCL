@@ -1,0 +1,31 @@
+.table thead{
+    background: #F9B120;
+    color:aliceblue;
+}
+.img-icon{
+max-height: 39px
+}
+
+.button{
+    background-color:#74C237;
+    border-radius:15px;
+    color:white;
+    border-color:#74C237; ;
+}
+
+.nav-item-yellow{
+    background: #F9B120;
+    color:white !important;
+    border-radius: 12px;
+    margin: 1px;
+}
+
+.nav-link {
+    color:white !important;
+}
+
+.active{
+    color:rgb(7, 0, 0) !important;
+    border-radius: 12px;
+    margin: 1px;
+}

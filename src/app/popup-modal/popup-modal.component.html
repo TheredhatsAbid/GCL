@@ -1,0 +1,45 @@
+<div class="modal-header topBar">
+    <h4 class="modal-title">Job Details</h4>
+    <button type="button" id="clspopUp" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-5">Job Title </div>
+    <div class="col-md-1">:</div>
+    <div class="col-md-6">{{objcompletedBookings.servicename}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">Total </div>
+    <div class="col-md-1">:</div>
+    <div class="col-md-6">{{objcompletedBookings.paidamount}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">Email </div>
+    <div class="col-md-1">:</div>
+    <div class="col-md-6">{{objcompletedBookings.email}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">Phone Number </div>
+    <div class="col-md-1">:</div>
+    <div class="col-md-6">{{objcompletedBookings.mobilenumber}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">Address </div>
+    <div class="col-md-1">:</div>
+    <div class="col-md-6">{{objcompletedBookings.address}}</div>
+  </div>
+  <div class="row p-2">
+    <input type="text" class=" w-100" style="height: 80px;"
+    [(ngModel)]='objcompletedBookings.feedback'
+    placeholder="Remarks">
+  </div>
+</div>
+
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-warning colorfont" (click)="activeModal.close('Close click')">Close</button>
+  <button type="button" class="btn btn-warning colorfont" (click)="MarkasComplete()">Mark as Completed</button>
+</div>

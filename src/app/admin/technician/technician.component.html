@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Action</th>
+                    <th scope="col">Technician Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lstTechnicianResponse; index as i">
+                    <td> 
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="item.select" checked>
+                    </td>
+                    <td>{{item.firstname}} {{item.lastname}}</td>
+                    <td>{{item.email}}</td>
+                    <td> {{item.mobile}} </td>
+                    <td>
+                        <img class="img-icon p-2" (click)="Edit(item.id)" src="/assets/images/Edit.png" alt="assigned-card.PNG">
+                        <img class="img-icon p-2" (click)="Delete(item.id)" src="/assets/images/delete.png" alt="assigned-card.PNG">
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="wrapper-other fadeInDown" >
+    <div id="formContent" style="background: radial-gradient(54.95% 54.95% at 50% 45.05%, #3B95C7 0%, #1F5979 100%);">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first p-3">
+        <img src="/assets/images/app-logo.png" alt="app-logo.png">
+        <h3 class="text-white">Login</h3>
+      </div>
+  
+      <!-- Login Form -->
+      <form #f="ngForm" [formGroup]="phoneForm">
+        <input type="text" id="login" class="fadeIn second" name="FirstName" placeholder="First Name">
+
+        <input type="text" id="login" class="fadeIn second" name="LastName" placeholder="Last Name">
+
+
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email Address">
+        <input type="tel" class="tel-text"  ng2TelInput [ng2TelInputOptions]="{initialCountry: 'in'}" />
+       
+        <input type="text" id="password" class="fadeIn second" name="login" placeholder="password">
+        <input type="submit" class="btn btn-warning" value="Register">
+
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter" style="background: radial-gradient(54.95% 54.95% at 50% 45.05%, #3B95C7 0%, #1F5979 100%);">
+        <span class="d-flex justify-content-center text-white"><p>Already Have Account</p>&nbsp;&nbsp;<p (click)="Route('login')" >Login</p></span>
+      </div>
+  
+    </div>
+  </div>

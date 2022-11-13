@@ -1,0 +1,196 @@
+<div class="container">
+    <div class="row">
+
+		<ul class="nav nav-tabs mb-3 d-flex flex-row-reverse" id="myTab0" role="tablist">
+			<li class="nav-item nav-item-yellow" role="presentation">
+			  <button
+
+				class="nav-link "
+				[ngClass]="{'active': id === 0 }"
+				id="home-tab0"
+				data-mdb-toggle="tab"
+				data-mdb-target="#home0"
+				type="button"
+				role="tab"
+				aria-controls="home"
+				aria-selected="true"
+				(click)="tabselected(0)"
+			  >
+				Pending Jobs
+			  </button>
+			</li>
+			<li class="nav-item nav-item-yellow" role="presentation">
+			  <button
+				class="nav-link"
+				[ngClass]="{'active': id === 1 }"
+				id="profile-tab0"
+				data-mdb-toggle="tab"
+				data-mdb-target="#profile0"
+				type="button"
+				role="tab"
+				aria-controls="profile"
+				aria-selected="false"
+				(click)="tabselected(1)"
+			  >
+				Closed Jobs
+			  </button>
+			</li>
+			<li class="nav-item nav-item-yellow" role="presentation">
+			  <button
+				class="nav-link "
+				[ngClass]="{'active': id === 2 }"
+				id="contact-tab0"
+				data-mdb-toggle="tab"
+				data-mdb-target="#contact0"
+				type="button"
+				role="tab"
+				aria-controls="contact"
+				aria-selected="false"
+				(click)="tabselected(2)"
+			  >
+				Open Jobs
+			  </button>
+			</li>
+		  </ul>
+		  <div class="tab-content" id="myTabContent0">
+			<div class="tab-pane fade show "
+			[ngClass]="{'show active': id === 0 }"
+			  id="home0"
+			  role="tabpanel"
+			  aria-labelledby="home-tab0"
+			>
+			<span> <h4> Pending Jobs </h4></span>
+			<table class="table">
+				<thead>
+				  <tr>
+					<th scope="col">Action</th>
+					<th scope="col">Job Title</th>
+					<th scope="col">Status</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr *ngFor="let d of Pending_adminJobmodal; let i=index">
+					<td> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
+					<td>{{d.servicename}}</td>
+					<td>
+						<!-- <span><img class="img-icon p-2" src="/assets/images/Assigned.png" alt="assigned-card.PNG">Assigned</span>
+						<br> -->
+						<span><img class="img-icon p-2" src="/assets/images/Unassigned.PNG" alt="assigned-card.PNG">Un Assigned</span>
+					</td>
+					<td><button class="button" (click)="open(mymodal , d.id)" >Assign</button></td>
+					<td>       
+						<img class="img-icon p-2" (click)="viewDetails(d.id)" src="/assets/images/Edit.png" alt="assigned-card.PNG">
+						<img class="img-icon p-2" src="/assets/images/delete.png" alt="assigned-card.PNG">
+					</td>
+				  </tr>
+				</tbody>
+			  </table>
+			  <nav aria-label="Page navigation example">
+				<ul class="pagination">
+				  <li class="page-item"><a class="page-link" (click)="previous('1')">Previous</a></li>
+				  <li class="page-item"><a class="page-link" (click)="next('1')">Next</a></li>
+				</ul>
+			  </nav>
+			</div>
+			<div class="tab-pane fade "
+			[ngClass]="{'show active': id === 1 }"
+			 id="profile0" role="tabpanel" aria-labelledby="profile-tab0">
+				<span>Closed Jobs</span>
+				<table class="table">
+					<thead>
+					  <tr>
+						<th scope="col">Action</th>
+						<th scope="col">Job Title</th>
+						<th scope="col">Status</th>
+						<th scope="col"></th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr  *ngFor="let d of Colmpleted_adminJobmodal; let i=index">
+						<td style="background-color:'#F4F4F4'"> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
+						<td style="background-color:'#F4F4F4'">{{d.servicename}}</td>
+						<td style="background-color:'#F4F4F4'">
+							<span><img class="img-icon p-2" src="/assets/images/Closed.PNG" alt="assigned-card.PNG">Assigned</span>
+							<!-- <br>
+							<span><img class="img-icon p-2" src="/assets/images/cross.PNG" alt="assigned-card.PNG">Un Assigned</span> -->
+						</td>
+						<td style="background-color:'#F4F4F4'">
+							<img class="img-icon p-2" src="/assets/images/eye.PNG" alt="assigned-card.PNG">
+							<img class="img-icon p-2" src="/assets/images/delete.png" alt="assigned-card.PNG"></td>
+					  </tr>
+					</tbody>
+				  </table>
+				  <nav aria-label="Page navigation example">
+					<ul class="pagination">
+					  <li class="page-item"><a class="page-link" (click)="previous('2')">Previous</a></li>
+					  <li class="page-item"><a class="page-link" (click)="next('2')">Next</a></li>
+					</ul>
+				  </nav>
+			</div>
+			<div class="tab-pane fade" 
+			[ngClass]="{'show active': id === 2 }"
+			id="contact0" role="tabpanel" aria-labelledby="contact-tab0">
+				<span>Open Jobs</span>
+				<table class="table">
+					<thead>
+					  <tr>
+						<th scope="col">Action</th>
+						<th scope="col">Job Title</th>
+						<th scope="col">Status</th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr  *ngFor="let d of Open_adminJobmodal; let i=index">
+							<td> <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked></td>
+							<td>{{d.servicename}}</td>
+							<td>
+								<span><img class="img-icon p-2" src="/assets/images/Assigned.png" alt="assigned-card.PNG">Assigned</span>
+								<!-- <br>
+								<span><img class="img-icon p-2" src="/assets/images/Unassigned.PNG" alt="assigned-card.PNG">Un Assigned</span> -->
+							</td>
+							<td> 
+								<span class="mx-2" >Mark as Completed</span> 
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+							</td>
+							<td>       
+								<img class="img-icon p-2" src="/assets/images/Edit.png" alt="assigned-card.PNG">
+								<!-- <img class="img-icon p-2" src="/assets/images/delete.png" alt="assigned-card.PNG"> -->
+							</td>
+						  
+						</tr>
+					</tbody>
+				  </table>
+				  <nav aria-label="Page navigation example">
+					<ul class="pagination">
+					  <li class="page-item"><a class="page-link" (click)="previous('3')">Previous</a></li>
+					  <li class="page-item"><a class="page-link" (click)="next('3')">Next</a></li>
+					</ul>
+				  </nav>
+			</div>
+		  </div>
+  </div>
+  </div>
+
+
+  
+<ng-template #mymodal let-modal>
+    <div class="modal-header topBar">
+      <h4 class="modal-title" id="modal-basic-title">Pending Jobs</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+		<select class="form-select form-select-lg mb-3" [(ngModel)]="selectedID" aria-label=".form-select-lg example">
+			<option *ngFor="let d of techDetails; let i=index"
+			[value]="d.id">{{d.firstname}} - {{d.lastname}}</option>
+		  </select>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning colorfont w-100" (click)="modal.close('Save click')">Ok</button>
+    </div>
+  </ng-template>

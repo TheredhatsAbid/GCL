@@ -1,0 +1,38 @@
+<router-outlet></router-outlet>
+<input type="checkbox" id="check"> 
+<label   class="chat-btn" for="check"> 
+    <img src="../assets/images/chat-icon.JPG" style="height:100%;width: 100%;">
+ </label> 
+ <div class="wrapper" > 
+    <div class="header topBar">
+         <h6>Let's Chat - Online</h6>
+         </div> 
+         <div class="text-center p-2" style="max-height: 250px; min-height: 250px;"> 
+            <div style="max-height: 182px; min-height: 182px;overflow-y: scroll; scroll-behavior: auto;">
+            <ng-container *ngFor="let message of messages" >
+                <div class="message"
+                [ngClass]="{ 'from': message.author === 'bot',
+                'to': message.author === 'user' }">
+                {{ message.content }}
+                </div>
+                </ng-container>
+            </div>
+                <div style="position: absolute;right: 0; bottom: 0;">
+                <label *ngIf="messages.length == 0; else dialogInfo" for="nameField">Your message</label>
+                <input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text">
+                <button (click)="sendMessage()">Send</button>
+                
+                <ng-template #dialogInfo>
+                <span [className]="'float-right'">Total messages: {{messages.length}}</span>
+                </ng-template>
+                </div>
+            <!-- <app-chat style="height: 50px;"></app-chat> -->
+            <!-- <span>Please fill out the form to start chat!</span> 
+        </div> <div class="chat-form">
+             <input type="text" class="form-control" placeholder="Name"> 
+             <input type="text" class="form-control" placeholder="Email"> 
+             <textarea class="form-control" placeholder="Your Text Message"></textarea> 
+             <button class="btn btn-success btn-block">Submit</button>  -->
+            
+        </div> 
+</div>

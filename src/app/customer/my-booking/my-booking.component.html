@@ -1,0 +1,60 @@
+<div class="wrapper-other fadeInDown" >
+    <div id="formContent" >
+     
+      <div class="fadeIn first topBar  py-3 ">
+       <h3>My Booking</h3> 
+      </div>
+      <div class="row d-flex justify-content-center ">
+        <span > <h3>Open Jobs</h3></span> 
+        <div class="container px-5">  
+        <table class="table bg table-hover ">
+            <tbody>
+              <tr  *ngFor="let p of Pagination_lstUpComingBookings; let j=index" >
+                <td>{{p.servicename}}</td>
+                <td>{{p.paidamount}}</td>
+                <td>></td>
+              </tr>
+          
+            </tbody>
+          </table>
+        </div>
+
+        <span >Closed Jobs</span> 
+        <div class="container px-5">  
+        <table class="table bg table-hover" >
+            <tbody>
+              <tr  *ngFor="let p of lstCompletedBookings; let j=index" >
+                <td>{{p.servicename}}</td>
+                <td>{{p.paidamount}}</td>
+                <td>></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+          <!-- <div class="col-md-4 bg">
+              <div>test</div>
+          </div>
+          <div class="col-md-4 bg" style="background-color: #F4F4F4
+          red">
+            <div>test</div> -->
+        <!-- </div> -->
+        <!-- <div class="col-md-4 bg" style="background-color: F4F4F4red">
+            <div>test</div>
+        </div> -->
+      </div>
+        <!-- <input type="text" id="login" class="fadeIn second" name="Name" placeholder="Name">  
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email ">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Address">
+        <input type="text" id="password" class="fadeIn second" name="login" placeholder="Post Code">
+        <input type="text" id="login" class="fadeIn second" name="Name" placeholder="Phone">  
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Service Required">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Description of work needed">
+        <input type="text" id="password" class="fadeIn second" name="login" placeholder="Estimated Date">
+        <span class="Upload Image"><p>Don't have an account</p></span>
+        <input type="text" id="password" class="fadeIn second" name="login" placeholder="Add Script">
+        <span class="Upload Image"><p>Total</p></span> -->
+     
+     
+  
+    </div>
+  </div>

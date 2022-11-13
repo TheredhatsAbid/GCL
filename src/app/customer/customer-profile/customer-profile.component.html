@@ -1,0 +1,13 @@
+<div class="wrapper-other fadeInDown" >
+    <div id="formContent" >
+     
+      <div class="fadeIn first  p-3">
+        <img class="img mx-3"style="margin-top: -70px;border-radius: 56px;" src="/assets/images/user.jpg" alt="Avatar">
+      </div>
+        <input type="text" id="login" class="fadeIn second" name="Name" placeholder="Name" [(ngModel)]="objUserProfileResponse.firstname">  
+        <input type="text" id="Email" class="fadeIn second" name="Email" placeholder="Email" [(ngModel)]="objUserProfileResponse.email" >
+        <br>
+        <textarea id="Address" class="fadeIn second textarea" name="Address" placeholder="Address" [(ngModel)]="objUserProfileResponse.mobile"> </textarea>
+        <button type="button" class="btn btn-warning" style="width: 65%; color:white" >Save</button>
+    </div>
+  </div>

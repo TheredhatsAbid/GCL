@@ -1,0 +1,93 @@
+<div class="wrapper-other fadeInDown" *ngIf="isNew">
+    <div id="formContent">
+
+        <div class="fadeIn first topBar  p-3">
+            Valuate
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-12">
+                <select class="form-select fadeIn second select" [(ngModel)]="objeveluation.serviceId"
+                    (change)="GetSubServices()" aria-label="Default select example">
+                    <label for="">Service Details</label>
+                    <option *ngFor="let d of lstgetAll; let i=index" [value]="d.id">{{d.name}}</option>
+                </select>
+
+            </div>
+
+            <div class="col-md-12">
+                <select class="form-select fadeIn second select" [(ngModel)]="objeveluation.serviceId"
+                    aria-label="Default select example">
+                    <label for="">Service Required</label>
+                    <option *ngFor="let d of lstsubservices; let i=index" [value]="d.id">{{d.name}}</option>
+                </select>
+
+            </div>
+
+            <div class="col-md-12">
+                <textarea id="Address" class="fadeIn second textarea" name="Address"
+                    [(ngModel)]="objeveluation.itemdescription" placeholder="description">  Item Description</textarea>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center px-4">
+            <div class="col-4 m-1 bg-upload-img p-1">
+                <input type="file" name="image" (change)="onFileSelected($event)">
+            </div>
+
+            <div class="col-4 m-1 bg-upload-video p-1">
+                <input type="file" name="image" (change)="onFileSelected_video($event)">
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center px-4">
+            <button type="button" class="btn btn-warning m-4" (click)="AddValuation()"
+                style="width: 65%; color:white;border-radius: 60px;">Get a Quote</button>
+
+        </div>
+
+    </div>
+</div>
+<div class="wrapper-other fadeInDown" *ngIf="!isNew">
+    <div id="formContent">
+
+        <div class="fadeIn first topBar  p-3">
+            Valuate
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-12">
+                <img class="plus" src="/assets/images/plus.PNG">
+
+            </div>
+
+            <div class="col-md-12">
+                <select class="form-select fadeIn second select" [(ngModel)]="objeveluation.serviceId"
+                    aria-label="Default select example">
+                    <label for="">Service Required</label>
+                    <option *ngFor="let d of lstsubservices; let i=index" [value]="d.id">{{d.name}}</option>
+                </select>
+
+            </div>
+
+            <div class="col-md-12">
+                <textarea id="Address" class="fadeIn second textarea" name="Address"
+                    [(ngModel)]="objeveluation.itemdescription" placeholder="description">  Item Description</textarea>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center px-4">
+            <div class="col-4 m-1 bg-upload-img p-1" >
+                <input  style=" margin-top: 30px;" type="file" name="image"  (change)="onFileSelected($event)">
+            </div>
+
+            <div class="col-4 m-1 bg-upload-video p-1">
+                <input style=" margin-top: 30px;" type="file" name="image" (change)="onFileSelected_video($event)">
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center px-4">
+            <button type="button" class="btn btn-warning m-4" (click)="AddValuation()"
+                style="width: 65%; color:white;border-radius: 60px;">Get a Quote</button>
+        </div>
+
+    </div>
+</div>

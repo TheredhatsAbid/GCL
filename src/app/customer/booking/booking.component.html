@@ -1,0 +1,135 @@
+<div class="wrapper-other fadeInDown">
+  <div id="formContent">
+
+    <div class="fadeIn first topBar  p-3">
+      Continue Booking
+    </div>
+    <input type="text" id="login" class="fadeIn second" name="Name" placeholder="Name"
+      [(ngModel)]="addBookingRequest.name">
+    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email "
+      [(ngModel)]="addBookingRequest.email">
+    <br>
+
+    <input type="text" id="password" class="fadeIn second" name="PostCode" placeholder="Post Code"
+      [(ngModel)]="addBookingRequest.postalcode" (blur)="postalcodeaddresses()">
+
+      <select class="form-select fadeIn second select" aria-label="Default select example" 
+      [(ngModel)]="addBookingRequest.address">
+        <label for="">Service Required</label>
+        <option *ngFor="let p of addresses; let i=index" [value]="p">{{p}} </option>
+      </select>
+
+      <textarea id="Address" class="fadeIn second textarea" name="Address" placeholder="Address"
+      [(ngModel)]="addBookingRequest.addressnotes">  Address Notes</textarea>      
+
+
+
+    <input type="text" id="Phone" class="fadeIn second" name="Phone" placeholder="Phone"
+      [(ngModel)]="addBookingRequest.mobilenumber">
+    <!-- <input type="text" id="ServiceRequired" class="fadeIn second" name="ServiceRequired" placeholder="Service Required"
+      [(ngModel)]="servicename"> -->
+
+    <select class="form-select fadeIn second select" aria-label="Default select example">
+      <label for="">Service Required</label>
+      <option *ngFor="let p of lstsubservices; let i=index" [value]="p.id">{{p.name}} </option>
+
+    </select>
+
+
+    <textarea id="Descriptionofworkneeded" class="fadeIn second textarea" name="Descriptionofworkneeded"
+      placeholder="Description of work needed" [(ngModel)]="addBookingRequest.workdescription">  </textarea>
+    <br>
+    <mat-form-field class="datePicker">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="myDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <input type="hidden" name="size" value="1000000">
+    <div>
+      <input type="file" name="image" (change)="onFileSelected($event)">
+    </div>
+    <!-- <div>
+      <input id="textauthor" name="name" placeholder="Name">
+      <button type="submit" (click)="onSubmit()" name="upload">POST</button>
+    </div> -->
+    <!-- <div class="group-gap">
+      <div class="avatar-upload">
+        <div class="avatar-edit">
+          <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+        </div>
+        <div class="avatar-preview">
+          <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="Upload Image" (click)="fileInput.click()">
+      <h2 style=" cursor: pointer">Upload Image</h2>
+    </span> -->
+  
+    <ngx-paypal *ngIf="showPaypalButtons" [config]="payPalConfig">
+    </ngx-paypal>
+    <button *ngIf="showPaypalButtons" (click)="back()">Close</button>
+    <!-- PayPal -->
+
+    <span class="Upload Image">
+      <p>Total &nbsp;&nbsp;&nbsp;:${{selectdAmount}}</p> 
+    </span>
+
+    <!-- <button type="button" class="btn btn-warning" style="width: 65%; color:white"
+    (click)="makePayment(selectdAmount , selectedID)">Continue Booking</button> -->
+
+
+    <button type="button"  class="btn btn-warning m-4" style="width: 65%; color:white;border-radius: 60px;"
+    (click)="openPayment(PaymentModal , '0')" >Continue Booking</button>
+  </div>
+
+
+</div>
+
+
+
+<button hidden class="button" id="btnOpenPopUp" (click)="open(mymodal , '0')">Assign</button>
+
+<ng-template #mymodal let-modal style="height: 90vh;">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Paypal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <iframe [src]="urlSafe" style="width:100% ; height:100%">
+    </iframe>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #PaymentModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Payment Method</h4>
+    <button type="button" id="btnPaymentModal" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container row d-flex justify-content-center">
+      <div class="col-sm-3 p-5 bg-stripe" (click)="makePayment(selectdAmount , selectedID)">
+        
+      </div>
+      <div class="col-sm-3 p-5 bg-Paypal"  (click)="open(mymodal , '0')">
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
